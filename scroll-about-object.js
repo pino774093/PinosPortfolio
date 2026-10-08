@@ -797,7 +797,7 @@ import { COLORS, colorToRgb } from './water-palette.js';
     modelRoot.userData.scene = scene;
     scene.add(modelRoot);
 
-    new GLTFLoader().load('/models/stone_2k_test.glb', (gltf) => {
+    new GLTFLoader().load(`${import.meta.env.BASE_URL}models/stone_2k_test.glb`, (gltf) => {
       const model = gltf.scene;
       const modelPose = new THREE.Group();
       modelRoot.add(modelPose);

@@ -557,7 +557,7 @@ function animate(time) {
 }
 
 new GLTFLoader().load(
-  '/models/__stone.glb',
+  `${import.meta.env.BASE_URL}models/__stone.glb`,
   (gltf) => {
     const model = gltf.scene;
     model.traverse((object) => {
