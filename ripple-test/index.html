@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Water ripple · shader test</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #E8EDEB; color: #263437; font: 14px/1.6 system-ui, sans-serif; }
+      main { max-width: 1100px; margin: auto; padding: 28px 20px; }
+      h1 { font-size: 24px; margin: 0; }
+      p { color: #64787C; margin: 8px 0 20px; }
+      canvas { display: block; width: 100%; aspect-ratio: 16/9; touch-action: none; border: 1px solid #CFDDDE; }
+      .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0; }
+      button, select { font: inherit; color: inherit; background: #A8C3C9; border: 1px solid #93B5BE; padding: 6px 12px; border-radius: 4px; }
+      #status { font-size: 12px; color: #64787C; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Water ripple / 독립 셰이더 테스트</h1>
+      <p>커서를 올리거나 움직이면 잔잔한 파동이 생기고, 클릭하면 더 크고 묵직한 원형 물결이 퍼집니다.</p>
+      <canvas id="water" aria-label="드래그하여 물결을 만드는 테스트 화면"></canvas>
+      <div class="controls">
+        <button id="drop">중앙에 큰 물결</button>
+        <button id="reset">초기화</button>
+        <button id="pause">일시 정지</button>
+        <label>보기 <select id="view"><option value="0">굴절 + 반사광</option><option value="1">압력</option><option value="2">기울기</option></select></label>
+      </div>
+      <div id="status" role="status">WebGL 초기화 중…</div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

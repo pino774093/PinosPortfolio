@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hello, I'm Pino. — Visual Communication Design" />
+    <title>Hello, I'm Pino.</title>
+    <script>
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/byu5ewd.css" />
+    <link rel="stylesheet" href="style.css?v=works-panel-diagonal-fix-20261008-4" />
+    <link rel="stylesheet" href="home-typography.css" />
+  </head>
+  <body>
+    <div class="site-intro-loader" id="site-intro-loader" aria-hidden="true">
+      <span class="site-intro-loader__title">Hello, I'm Pino.</span>
+    </div>
+    <main id="app">
+      <div class="home-scroll-timeline">
+        <section class="page page--home is-active" data-page="home" aria-label="Home">
+          <button class="home-enter" id="home-enter" type="button" aria-label="메뉴 열기"></button>
+          <div class="home-intro">
+            <p class="eyebrow">Hello, I'm Pino.</p>
+            <h1>Making Waves with Visuals.</h1>
+          </div>
+          <nav class="home-menu" id="home-menu" aria-label="Main navigation">
+            <button class="menu-wordmark" data-go="home">Hello, I'm Pino.</button>
+            <button data-go="work">WORKS</button>
+            <button data-go="about">ABOUT</button>
+            <button data-go="contact">CONTACT</button>
+          </nav>
+          <canvas class="home-water-canvas" id="home-water-canvas" aria-hidden="true"></canvas>
+        </section>
+      </div>
+
+      <section class="scroll-section scroll-section--empty" aria-label="Next section">
+        <svg class="scroll-background-reveal" id="scroll-background-reveal" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+          <path id="scroll-background-reveal-path" fill="#E8EDEB"></path>
+        </svg>
+        <section class="scroll-about" id="scroll-about" aria-labelledby="scroll-about-title">
+          <div class="scroll-about__object-runway" id="scroll-about-object-runway">
+            <div class="scroll-about__composition" id="scroll-about-composition">
+              <div class="scroll-about__object" id="scroll-about-object" aria-label="3D stone object" role="img">
+                <canvas id="scroll-about-object-canvas" aria-hidden="true"></canvas>
+              </div>
+              <div class="scroll-about__content" id="scroll-about-copy">
+                <h2 class="scroll-about__dynamic-title" id="scroll-about-title">Who is Pino?</h2>
+                <div class="scroll-about__body">
+                  <p>I’m Pino, a first-year Visual Design student at Kookmin University.</p>
+                  <p>Rather than defining myself through a single field, I’m interested in many different areas of visual culture — from illustration and web design to moving images and visual marketing.</p>
+                  <p>Whenever I discover an image, idea, or form of expression that catches my attention, I want to understand it by making something of my own.</p>
+                  <p>For now, I’m exploring different fields and slowly discovering what I truly enjoy and what I want to become better at.</p>
+                </div>
+              </div>
+              <div class="scroll-about__rotation-copy scroll-about__rotation-copy--right">
+                <h2 class="scroll-about__dynamic-title"><span class="scroll-about__title-first-line">But I’m still</span><span class="scroll-about__title-line">at the</span><span class="scroll-about__title-line">beginning.</span></h2>
+                <div class="scroll-about__body">
+                  <p>There is still so much I haven’t learned, tried, or created yet.</p>
+                  <p>The things I’ve made so far are less like a finished direction and more like small attempts to understand what I like.</p>
+                  <p>At this point, I’m just as curious about what I will discover next as I am about what I have already made.</p>
+                </div>
+              </div>
+            </div>
+            <div class="scroll-about__rotation-spacer" aria-hidden="true"></div>
+          </div>
+            <div class="scroll-about__post-rotation-spacer">
+              <section class="scroll-now" id="scroll-now" aria-labelledby="scroll-now-title">
+                <div class="scroll-now__intro">
+                  <h2 class="scroll-about__dynamic-title" id="scroll-now-title">Now</h2>
+                  <div class="scroll-about__body">
+                    <p>Right now, I’m learning, experimenting, and making.</p>
+                    <p>At university, I’m exploring different forms of visual expression through typography, graphic design, motion, interaction, and web design.</p>
+                    <p>Inside and outside of class, I keep trying different ways of making — from moving typography and posters to interactive web experiences.</p>
+                    <p>I see not only finished works, but also experiments, mistakes, and unfinished attempts as part of the process that is shaping who I am.</p>
+                  </div>
+                </div>
+                <div class="portfolio-water-sequence" id="portfolio-water-sequence" aria-hidden="true"></div>
+                <div class="scroll-now__gallery" id="scroll-now-gallery" aria-label="Selected work"></div>
+                <section class="scroll-now__ending" id="scroll-now-ending" aria-labelledby="scroll-now-ending-title">
+                  <h2 class="scroll-about__dynamic-title" id="scroll-now-ending-title">I’m still becoming.</h2>
+                  <div class="scroll-about__body">
+                    <p>Among the countless fields that deal with what we see, I’m still trying to find my own path. Something I thought I loved may change, while an unexpected field may suddenly become interesting to me. Through that process, I’m slowly discovering the images, sensations, and ideas that I keep returning to.</p>
+                    <p>I don’t have a definite answer yet. For now, I think it is more important to keep looking, making, and experiencing than to decide too quickly what kind of designer I should become.</p>
+                  </div>
+                </section>
+                <section class="scroll-final-home" id="scroll-final-home" aria-label="Closing question">
+                  <div class="scroll-final-home__screen">
+                    <svg class="scroll-final-home__clip-defs" aria-hidden="true" focusable="false">
+                      <defs>
+                        <clipPath id="ending-curve-clip" clipPathUnits="objectBoundingBox">
+                          <path id="ending-curve-path" d="M 0 1.27 C .22 1.33, .76 1.17, 1 1.23 L 1 1.3 L 0 1.3 Z"></path>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <canvas id="ending-water-canvas" aria-hidden="true"></canvas>
+                    <div class="scroll-final-home__title" role="heading" aria-level="1">How far will this wave go?</div>
+                  </div>
+                </section>
+              </section>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page page--work" data-page="work" aria-label="Works">
+        <header class="page-header"><span class="wordmark page-home-wordmark-spacer" aria-hidden="true"></span><button class="back-button" data-back aria-label="이전 페이지로">←</button><span>WORKS</span></header>
+        <div class="work-grid" id="work-grid" aria-label="Project gallery"></div>
+      </section>
+
+      <section class="page page--about page--content" data-page="about" aria-label="About and Contact">
+        <header class="page-header"><span class="wordmark page-home-wordmark-spacer" aria-hidden="true"></span><button class="back-button" data-back aria-label="이전 페이지로">←</button></header>
+        <section class="info-section info-section--about" id="about-section" aria-label="About">
+          <div class="content-wrap">
+            <p class="section-label">ABOUT</p>
+            <h2>Who is Pino?</h2>
+            <div class="about-copy">
+              <p>Visual Communication Design student at Kookmin University.<br /><br />Interested in visual design, video, and visual storytelling.<br />Exploring how images, movement, and sound can come together.</p>
+            </div>
+          </div>
+        </section>
+        <section class="info-section info-section--contact" id="contact-section" aria-label="Contact">
+          <div class="content-wrap contact-wrap">
+            <p class="section-label">LET'S CONNECT</p>
+            <h2>Say hello.</h2>
+            <div class="contact-list">
+              <a href="mailto:pino774093@gmail.com">pino774093@gmail.com</a>
+              <a href="https://www.instagram.com/pinoiing/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="scroll-floating-nav" id="scroll-floating-nav" aria-label="Section navigation">
+      <button type="button" data-go="about">ABOUT</button>
+      <button type="button" data-go="contact">CONTACT</button>
+    </nav>
+
+    <button id="sound-control" class="sound-control" type="button" aria-label="Enable sound" aria-pressed="false">
+      <span class="sound-guide-label">소리를 켜보세요.</span>
+      <svg class="sound-icon sound-icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m17 9 4 6m0-6-4 6"/></svg>
+      <svg class="sound-icon sound-icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9.5a4 4 0 0 1 0 5M19.5 7a7.5 7.5 0 0 1 0 10"/></svg>
+    </button>
+
+    <div class="project-modal" id="project-modal" aria-hidden="true">
+      <article class="project-detail" id="project-detail"></article>
+    </div>
+    <script type="module" src="site-intro-loader.js"></script>
+    <script src="script.js?v=works-panel-diagonal-fix-20261008-4"></script>
+    <script src="home-typography.js"></script>
+    <script type="module" src="scroll-final-home-typography.js"></script>
+    <script type="module" src="scroll-smoothing.js"></script>
+    <script type="module" src="scroll-reveal.js"></script>
+    <script type="module" src="scroll-about-reveal.js"></script>
+    <script type="module" src="scroll-now-ending-wave.js"></script>
+    <script type="module" src="scroll-about-parallax.js"></script>
+    <script type="module" src="scroll-about-object.js"></script>
+    <script type="module" src="water-effect.js"></script>
+    <script type="module" src="ending-water.js"></script>
+    <script type="module" src="scroll-floating-nav.js"></script>
+    <script type="module" src="middle-click-waterdrop.js"></script>
+    <script type="module" src="custom-cursor.js"></script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Side-view water test</title>
+    <style>
+      :root { color-scheme: light; font-family: "DM Sans", Arial, sans-serif; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; background: #E8EDEB; }
+      body { min-height: 260svh; overflow-x: hidden; }
+      #water-test-canvas { position: fixed; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; }
+      .water-test-ui { position: fixed; inset: 0; z-index: 1; pointer-events: none; color: #263437; }
+      .water-test-title { position: absolute; top: 28px; left: 32px; margin: 0; font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+      .water-test-help { position: absolute; right: 32px; bottom: 28px; margin: 0; font-size: 13px; }
+      .water-test-label { position: absolute; left: 32px; color: rgba(100,120,124,.72); font-size: 11px; letter-spacing: .18em; }
+      .water-test-label--air { top: 25%; }
+      .water-test-label--water { top: 70%; }
+      .water-test-progress { position: absolute; top: 28px; right: 32px; font-size: 11px; letter-spacing: .12em; }
+      @media (max-width: 640px) {
+        .water-test-title, .water-test-label { left: 18px; }
+        .water-test-help, .water-test-progress { right: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="water-test-canvas" aria-label="Side-view water simulation test"></canvas>
+    <div class="water-test-ui" aria-hidden="true">
+      <h1 class="water-test-title">Side-view water test</h1>
+      <span class="water-test-label water-test-label--air">AIR</span>
+      <span class="water-test-label water-test-label--water">WATER</span>
+      <span class="water-test-progress" id="water-test-progress">SCROLL 00%</span>
+      <p class="water-test-help">Scroll down slowly to see the stone press into the surface.</p>
+    </div>
+    <script type="module" src="/side-view-water-test.js"></script>
+  </body>
+</html>

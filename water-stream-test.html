@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#B8CDD4" />
+    <title>Water Stream Test</title>
+    <style>
+      :root { color-scheme: light; font-family: "DM Sans", Arial, sans-serif; }
+      * { box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #B8CDD4; }
+      #water-stream-canvas { position: fixed; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+      .test-ui { position: fixed; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 28px 32px; color: #263437; pointer-events: none; }
+      .test-heading { display: flex; align-items: baseline; gap: 14px; }
+      h1 { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+      .test-kicker, #flow-state { margin: 0; font-size: 10px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; opacity: .62; }
+      .test-instruction { align-self: flex-end; max-width: 260px; margin: 0; font-size: 12px; line-height: 1.55; text-align: right; opacity: .7; }
+      @media (max-width: 640px) { .test-ui { padding: 20px 18px; } .test-heading { display:block; } .test-kicker { margin-top: 6px; } }
+    </style>
+  </head>
+  <body>
+    <canvas id="water-stream-canvas" aria-label="A narrow falling stream of water that responds to pointer movement"></canvas>
+    <main class="test-ui" aria-hidden="true">
+      <div class="test-heading">
+        <h1>Water Stream Test</h1>
+        <p class="test-kicker">One falling stream · Three.js</p>
+      </div>
+      <p id="flow-state">Heightfield · resting</p>
+      <p class="test-instruction">Move your pointer across the stream to disturb its flow. The water gradually settles after you pass.</p>
+    </main>
+    <script type="module" src="/water-stream-test.js"></script>
+  </body>
+</html>
