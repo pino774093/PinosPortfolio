@@ -11,6 +11,17 @@ const projects = [
   { title: "50 DRAWINGS 01", year: "박서진, 2026", category: "DRAWINGS", image: "assets/50 drawings/CamScanner 2026. 3. 12. 17.51(1)_1.JPG", type: "image", detail: { type: "drawings", cover: "assets/50 drawings/CamScanner 2026. 3. 12. 17.51(1)_1.JPG", media: ["CamScanner 2026. 3. 12. 17.51(1)_1.JPG", "CamScanner 2026. 3. 12. 17.51(2)_1.JPG", "CamScanner 2026. 3. 12. 17.51(2)_2.JPG", "CamScanner 2026. 3. 12. 17.51(2)_3.JPG", "CamScanner 2026. 3. 12. 17.51(2)_4.JPG", "CamScanner 2026. 3. 12. 17.51(2)_5.JPG", "CamScanner 2026. 3. 12. 17.51(2)_6.JPG", "CamScanner 2026. 3. 12. 17.51(2)_8.JPG", "CamScanner 2026. 3. 12. 17.51(2)_9.JPG", "IMG_6581.jpg", "IMG_6582.jpg", "IMG_6585.jpg", "IMG_6681.jpg", "IMG_6683.jpg", "IMG_6684.jpg", "IMG_6712.jpg", "IMG_6716.jpg", "IMG_6717.jpg", "IMG_6722.jpg", "IMG_6723.jpg", "IMG_6729.jpg", "IMG_6737.jpg", "IMG_6764.jpg", "IMG_6768.jpg", "IMG_6796.png", "IMG_6804.jpg", "IMG_6805.jpg", "IMG_6832.jpg", "IMG_6837.jpg", "IMG_6984.jpg"].map((name) => `assets/50 drawings/${name}`) }, description: "하나의 대상을 다양한 재료와 표현 방식으로 50번 반복해 그린 드로잉 시리즈." },
   { title: "50 DRAWINGS 02", year: "박서진, 2026", category: "DRAWINGS", image: "assets/50 drawings2/IMG_6831.jpg", type: "image", detail: { type: "drawings", cover: "assets/50 drawings2/IMG_6831.jpg", media: ["IMG_6831.jpg", "IMG_6833.jpg", "IMG_6835.jpg", "IMG_6836.jpg", "IMG_6839.jpg", "IMG_6841.jpg", "IMG_6850.jpg", "IMG_6852.jpg", "IMG_6853.jpg", "IMG_6854.jpg", "IMG_6856.jpg", "IMG_6858.jpg", "IMG_6859.jpg", "IMG_6860.jpg", "IMG_6879.jpg", "IMG_6880.jpg", "IMG_6881.jpg", "IMG_6920.jpg", "IMG_6921.jpg", "IMG_6924.jpg", "IMG_6925.jpg", "IMG_6926.jpg", "IMG_6930.jpg", "IMG_6932.jpg", "IMG_6933.jpg", "IMG_6936.jpg", "IMG_6939.jpg", "IMG_6943.jpg", "IMG_6970.jpg", "IMG_6975.jpg"].map((name) => `assets/50 drawings2/${name}`) }, description: "또 다른 하나의 대상을 다양한 재료와 표현 방식으로 50번 반복해 그린 드로잉 시리즈." },
 ];
+
+// Resolve every WORKS media record from the Vite deployment base once, so
+// gallery cards and detail views share URLs rooted at the repository subpath.
+for (const project of projects) {
+  project.image = resolveProjectAsset(project.image);
+  if (project.detail?.cover) project.detail.cover = resolveProjectAsset(project.detail.cover);
+  if (Array.isArray(project.detail?.media)) {
+    project.detail.media = project.detail.media.map(resolveProjectAsset);
+  }
+}
+
 // Share the existing WORKS records with the scroll story without duplicating assets or metadata.
 window.portfolioProjectData = projects;
 
