@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Always publish the latest portfolio source from the production branch,
+          # including when this workflow is started manually from another ref.
+          ref: main
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
