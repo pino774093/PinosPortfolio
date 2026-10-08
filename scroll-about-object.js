@@ -379,13 +379,25 @@ import { COLORS, colorToRgb } from './water-palette.js';
       && rect.left < window.innerWidth;
   }
 
+  function isPortfolioStoryActiveNow() {
+    if (document.visibilityState === 'hidden' || !waterSequence || !closingSection) return false;
+    const scrollY = window.scrollY;
+    const waterStart = waterSequence.getBoundingClientRect().top + scrollY;
+    const closingRect = closingSection.getBoundingClientRect();
+    const closingEnd = closingRect.top + scrollY + closingSection.offsetHeight;
+    return scrollY >= waterStart && scrollY <= closingEnd;
+  }
+
   function render(time = performance.now()) {
     renderQueued = false;
     // Keep the exact underwater frame behind the WORKS focus transition.
     // Scroll locking alone is insufficient because this renderer owns a
     // continuous water-simulation loop that can otherwise advance in place.
     if (document.documentElement.classList.contains('is-work-focus')) return;
-    if (!isNear || !isRenderSurfaceVisible()) return;
+    // Keep processing scroll-driven story state after the host canvas leaves
+    // the viewport. This frame may activate its fixed layer and bring the
+    // shared stone/water renderer back into view.
+    if (!isNear && !isPortfolioStoryActiveNow()) return;
     const mouseDeltaTime = previousMouseFrameTime
       ? Math.min((time - previousMouseFrameTime) / 1000, 0.05)
       : 1 / 60;
@@ -745,19 +757,11 @@ import { COLORS, colorToRgb } from './water-palette.js';
 
   function requestRender() {
     if (document.documentElement.classList.contains('is-work-focus')) return;
-    if (!isNear || !isRenderSurfaceVisible()) return;
     const closingVisible = closingSection && (() => {
       const rect = closingSection.getBoundingClientRect();
       return rect.bottom > 0 && rect.top < window.innerHeight;
     })();
-    const scrollStoryActive = (() => {
-      if (!waterSequence || !closingSection) return false;
-      const scrollY = window.scrollY;
-      const waterStart = waterSequence.getBoundingClientRect().top + scrollY;
-      const closingRect = closingSection.getBoundingClientRect();
-      const closingEnd = closingRect.top + scrollY + closingSection.offsetHeight;
-      return scrollY >= waterStart && scrollY <= closingEnd;
-    })();
+    const scrollStoryActive = isPortfolioStoryActiveNow();
     const needsClosingScaleRefresh = lastRenderedClosingProgress > 0;
     if ((!isNear && !closingVisible && !scrollStoryActive && !needsClosingScaleRefresh) || renderQueued) return;
     renderQueued = true;
