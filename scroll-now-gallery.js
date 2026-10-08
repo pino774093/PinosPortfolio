@@ -1,3 +1,5 @@
+import { resolveProjectAsset } from './asset-url.js';
+
 const gallery = document.querySelector('#scroll-now-gallery');
 const projects = window.portfolioProjectData;
 
@@ -17,7 +19,7 @@ if (gallery && Array.isArray(projects)) {
     media.alt = project.title;
     media.loading = 'lazy';
     media.decoding = 'async';
-    media.src = encodeURI(project.image);
+    media.src = resolveProjectAsset(project.image);
     figure.append(media);
     item.append(figure);
     gallery.append(item);

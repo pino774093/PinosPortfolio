@@ -1,3 +1,5 @@
+import { resolveProjectAsset } from './asset-url.js';
+
 const projects = [
   { title: "《홀림》", year: "박서진, 2026", category: "ART", image: "assets/art/20261152박서진_frottage character 복사본.jpg", type: "image", detail: { type: "images", media: ["assets/art/20261152박서진_frottage character 복사본.jpg"] }, description: `프로타주 기법에서 보이는 다양한 질감과 물고기의 다양한 무늬를 엮어 만들었다.\n\n물고기들은 방향을 이리저리 바꾸며 리듬감을 자랑한다.\n\n마치 리듬체조처럼.\n\n소년은 홀린 듯 보고 있다.\n\n어항 속에 있음에도 물고기들은 어항 밖의 소년보다 자유로워 보인다.` },
   { title: "ART 2", category: "ART", image: "assets/art/10 textures layout 복사본.png", type: "image", detail: { type: "images", media: ["assets/art/10 textures layout 복사본.png"] }, description: "Texture layout study." },
@@ -37,7 +39,7 @@ if (nowGalleryEl) {
     // the fold and should load only as their scroll sequence approaches.
     image.loading = "lazy";
     image.decoding = "async";
-    image.src = encodeURI(project.image);
+    image.src = resolveProjectAsset(project.image);
     figure.append(image);
     const caption = document.createElement("figcaption");
     caption.className = "now-work-item__title";
@@ -843,7 +845,7 @@ window.addEventListener("popstate", (event) => {
 });
 
 const grid = document.querySelector("#work-grid");
-const mediaURL = (src) => encodeURI(src);
+const mediaURL = resolveProjectAsset;
 function mediaAspectRatio(media) {
   if (media instanceof HTMLImageElement && media.naturalWidth && media.naturalHeight) return media.naturalWidth / media.naturalHeight;
   if (media instanceof HTMLVideoElement && media.videoWidth && media.videoHeight) return media.videoWidth / media.videoHeight;
