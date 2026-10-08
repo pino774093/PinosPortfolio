@@ -12,6 +12,11 @@ const projects = [
   { title: "50 DRAWINGS 02", year: "박서진, 2026", category: "DRAWINGS", image: "assets/50 drawings2/IMG_6831.jpg", type: "image", detail: { type: "drawings", cover: "assets/50 drawings2/IMG_6831.jpg", media: ["IMG_6831.jpg", "IMG_6833.jpg", "IMG_6835.jpg", "IMG_6836.jpg", "IMG_6839.jpg", "IMG_6841.jpg", "IMG_6850.jpg", "IMG_6852.jpg", "IMG_6853.jpg", "IMG_6854.jpg", "IMG_6856.jpg", "IMG_6858.jpg", "IMG_6859.jpg", "IMG_6860.jpg", "IMG_6879.jpg", "IMG_6880.jpg", "IMG_6881.jpg", "IMG_6920.jpg", "IMG_6921.jpg", "IMG_6924.jpg", "IMG_6925.jpg", "IMG_6926.jpg", "IMG_6930.jpg", "IMG_6932.jpg", "IMG_6933.jpg", "IMG_6936.jpg", "IMG_6939.jpg", "IMG_6943.jpg", "IMG_6970.jpg", "IMG_6975.jpg"].map((name) => `assets/50 drawings2/${name}`) }, description: "또 다른 하나의 대상을 다양한 재료와 표현 방식으로 50번 반복해 그린 드로잉 시리즈." },
 ];
 
+const HIDDEN_WORK_TITLES = new Set(["ART 2"]);
+const WORKS_SECTION_ORDER = ["ART", "POSTER", "KINETIC TYPE", "ART ZINE"];
+const SELECTED_WORK_CATEGORIES = new Set(["ART", "POSTER", "ART ZINE"]);
+const isDisplayableWork = (project) => project.type === "image" && !HIDDEN_WORK_TITLES.has(project.title);
+
 // Resolve every WORKS media record from the Vite deployment base once, so
 // gallery cards and detail views share URLs rooted at the repository subpath.
 for (const project of projects) {
@@ -29,8 +34,7 @@ window.portfolioProjectData = projects;
 // WORKS records are available in the browser.
 const nowGalleryEl = document.querySelector("#scroll-now-gallery");
 if (nowGalleryEl) {
-  const excludedNowWorks = new Set(["ART 2", "KINETIC TYPE", "50 DRAWINGS 02", "50 DRAWINGS 01"]);
-  projects.filter((project) => project.type === "image" && !excludedNowWorks.has(project.title)).forEach((project, index) => {
+  projects.filter((project) => isDisplayableWork(project) && SELECTED_WORK_CATEGORIES.has(project.category)).forEach((project, index) => {
     const item = document.createElement("article");
     const isPrototypePanel = index < 3;
     item.className = `now-work-item${isPrototypePanel ? " now-work-item--prototype" : ""}`;
@@ -891,9 +895,8 @@ function cardMedia(project) {
   if (project.type === "video") return `<video class="project-image project-media" src="${mediaURL(project.image)}" autoplay muted loop playsinline preload="metadata" aria-label="${project.title}"></video>`;
   return `<img class="project-image project-media" src="${mediaURL(project.image)}" alt="${project.title}" loading="lazy" decoding="async" />`;
 }
-const sectionOrder = ["ART", "POSTER", "KINETIC TYPE", "ART ZINE"];
-sectionOrder.forEach((category) => {
-  const visibleProjects = projects.filter((project) => project.category === category && !["KINETIC TYPE", "ART 2", "MOVING POSTER 1", "MOVING POSTER 2"].includes(project.title));
+WORKS_SECTION_ORDER.forEach((category) => {
+  const visibleProjects = projects.filter((project) => project.category === category && isDisplayableWork(project));
   if (!visibleProjects.length) return;
   const section = document.createElement("section");
   section.className = "work-section";
